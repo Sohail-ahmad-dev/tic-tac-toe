@@ -1,0 +1,350 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.main-wraper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    font-family: cursive;
+}
+
+.main-wraper h1.game-title {
+    color: #81641C;
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.container {
+    width: 70vw;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 700px;
+    max-height: 550px;
+    flex-direction: column;
+}
+
+.toe-section {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    transition: 300ms ease-in-out;
+    justify-content: space-evenly;
+    gap: 4px;
+    position: relative;
+}
+
+.toe-section hr {
+    position: absolute;
+    width: 0;
+    z-index: 99999;
+    border: 2px solid white;
+    visibility: hidden;
+    transition: width 300ms ease-in-out;
+}
+
+.toe-item {
+    width: calc(33% - 5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+    background-color: #11213A;
+    border-radius: 3px;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #04C0B2;
+    animation: glowing 3s cubic-bezier(0.05, 1.03, 0.44, -0.91) infinite;
+    position: absolute;
+}
+
+.cross {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+}
+
+.cross::before,
+.cross::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #cf64dc;
+    animation: glowingCircle 3s cubic-bezier(0.05, 1.03, 0.44, -0.91) infinite;
+}
+
+.cross::before {
+    transform: rotate(41deg);
+}
+
+.cross::after {
+    transform: rotate(-43deg);
+}
+
+@keyframes glowing {
+    0% {
+        border: 1px solid #04C0B2;
+        box-shadow: 0 0 3px #04C0B2;
+    }
+    50% {
+        border: 4px solid #04ffee;
+        box-shadow: 0 0 10px #04ffee;
+    }
+    100% {
+        border: 1px solid #04C0B2;
+        box-shadow: 0 0 10px #04C0B2;
+    }
+}
+
+@keyframes glowingCircle {
+    0% {
+        background: #b766c0;
+        box-shadow: 0 0 3px #b766c0;
+    }
+    50% {
+        background: #ac3ebb;
+        box-shadow: 0 0 10px #ac3ebb;
+        height: 4px;
+    }
+    100% {
+        background: #b766c0;
+        box-shadow: 0 0 10px #b766c0;
+        height: 2px;
+    }
+}
+
+.playerTurn h4 {
+    font-size: 28px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playerTurn .circle,
+.playerTurn .cross {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    animation: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playerTurn {
+    padding-bottom: 15px;
+}
+
+.show {
+    top: 0;
+    opacity: 1;
+}
+
+.exist {
+    animation: jerk .4s ease-in-out;
+}
+
+@keyframes jerk {
+    0% {
+        transform: rotate3d(1, 1, 1, 2deg);
+    }
+    50% {
+        transform: rotate3d(1, 1, 1, -2deg);
+    }
+    100% {
+        transform: rotate3d(1, 1, 1, 0deg);
+    }
+}
+
+.curveLine {
+    width: 0;
+    transform-origin: 0 0;
+    background: none repeat scroll 0px 0px transparent;
+    border-top: 4px solid white;
+    border-top-color: white;
+    display: block;
+    position: absolute;
+    z-index: 9;
+    height: 1px;
+    transform: rotate(31deg);
+    left: 43px;
+    top: 20px;
+    z-index: 9999;
+    transition: width 400ms ease-in-out, height 500ms ease-in-out;
+}
+
+.case4 {
+    border-left: 4px solid white;
+    height: 90%;
+    left: calc(100% / 6);
+    top: 50%;
+    transform: translate(calc(-100% / 6), -50%);
+}
+
+.case5 {
+    border-left: 4px solid white;
+    height: 90%;
+    left: calc(100% / 2);
+    top: 50%;
+    transform: translate(calc(-100% / 2), -50%);
+}
+
+.case6 {
+    border-left: 4px solid white;
+    height: 90%;
+    left: calc(100% - (100% /6) + 4px);
+    top: 50%;
+    transform: translate(calc(-100% - (100% /6)), -50%);
+}
+
+.case8 {
+    height: 1px;
+    transform: rotate(-31deg);
+    left: 31px;
+    bottom: 21px;
+    width: 105%;
+    top: unset;
+}
+
+h5 a {
+    color: #fff;
+}
+
+.winOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+}
+
+.innerWin {
+    width: 100%;
+    height: 100%;
+    background-color: #11213A;
+    transition: 400ms ease-in-out;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.innerWin .wonText {
+    display: none;
+    padding-left: 0;
+    font-size: 30px;
+    transition: 500ms ease-in-out;
+}
+
+.innerWin span {
+    color: #fff;
+}
+
+.innerWin .cross,
+.innerWin .circle {
+    visibility: hidden;
+    transform: scale(.1);
+    position: absolute;
+    transition: all 400ms ease-in-out;
+}
+
+.dOverlay {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.dop1 {
+    visibility: visible !important;
+    transform: scale(1.4) !important;
+}
+
+.text {
+    display: block !important;
+    padding-left: 80px !important;
+}
+
+.innerWin h5 {
+    position: absolute;
+    bottom: 30px;
+    font-size: 22px;
+    display: none;
+}
+
+.playerWins {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.item {
+    width: 44%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border: 1px solid #11213A;
+    border-bottom-color: rgb(17, 33, 58);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    align-items: center;
+    border-radius: 10px;
+    border-bottom: 7px solid #11213A;
+}
+
+.item .cross::before,
+.cross::after {
+    animation: none;
+}
+
+.item .circle,
+.item .cross {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    animation: none;
+}
+
+@media(max-width: 991px) {
+    .container {
+        width: 95vw;
+        height: 100vh;
+    }
+}
+
+@media(max-width: 767px) {
+    .container {
+        width: 100vw;
+        height: 98vh;
+    }
+    .toe-section {
+        width: 95%;
+    }
+    .playerWins {
+        width: 93%;
+    }
+}
